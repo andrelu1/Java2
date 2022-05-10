@@ -34,7 +34,7 @@
             <tr><th>id</th><th>name</th></tr>
             <%for(Funcionarios a: list){%>
             <tr>
-                <td><%= a.getPrimeironome() %></td>
+                <td><%= a.getFuncionarioID() %></td>
                 <td><%= a.getTitulo() %></td>
                 <td><%= a.getEmail() %></td>
             </tr>
