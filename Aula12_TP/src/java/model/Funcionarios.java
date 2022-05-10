@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author root
  */
 public class Funcionarios {
-     String primeironome;
+     int funcionarioID;
      String titulo;
      String email;
     
@@ -46,12 +46,12 @@ public class Funcionarios {
         String url = "jdbc:sqlite:/home/andre/chinook.db";
         Connection con = DriverManager.getConnection(url);
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from employees");
+        ResultSet rs = stmt.executeQuery("select * from employees order by EmployeeId");
         while(rs.next()){
-            String primeironome = rs.getString("FirstName");
+            int funcionarioID = rs.getInt("EmployeeId");
             String titulo = rs.getString("Title");
             String email = rs.getNString("Email");
-            Funcionarios a = new Funcionarios(primeironome, titulo, email);
+            Funcionarios a = new Funcionarios(funcionarioID, titulo, email);
             list.add(a);
         }
         rs.close();
@@ -61,18 +61,18 @@ public class Funcionarios {
     }
      
      
-    public Funcionarios(String primeironome, String titulo, String email) {
-        this.primeironome = primeironome;
+    public Funcionarios(int funcionarioID, String titulo, String email) {
+        this.funcionarioID = funcionarioID;
         this.titulo = titulo;
         this.email = email;
     }
 
-    public String getPrimeironome() {
-        return primeironome;
+    public int getFuncionarioID() {
+        return funcionarioID;
     }
 
-    public void setPrimeironome(String primeironome) {
-        this.primeironome = primeironome;
+    public void setFuncionarioID(int funcionarioID) {
+        this.funcionarioID = funcionarioID;
     }
 
     public String getTitulo() {
